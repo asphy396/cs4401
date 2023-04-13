@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "exploit.py", line 21, in <module>
+    0x0: asm("nop")*(offset-len(payload)),
+  File "/home/asphy/.local/lib/python3.8/site-packages/pwnlib/context/__init__.py", line 1578, in setter
+    return function(*a, **kw)
+  File "/home/asphy/.local/lib/python3.8/site-packages/pwnlib/asm.py", line 682, in asm
+    assembler = _assembler()
+  File "/home/asphy/.local/lib/python3.8/site-packages/pwnlib/asm.py", line 234, in _assembler
+    gas, version = which_binutils('as', check_version=True)
+  File "/home/asphy/.local/lib/python3.8/site-packages/pwnlib/context/__init__.py", line 1578, in setter
+    return function(*a, **kw)
+  File "/home/asphy/.local/lib/python3.8/site-packages/pwnlib/asm.py", line 222, in which_binutils
+    for res in sorted(glob(path.join(dir, pattern))):
+  File "/usr/lib/python3.8/glob.py", line 21, in glob
+    return list(iglob(pathname, recursive=recursive))
+  File "/usr/lib/python3.8/glob.py", line 74, in _iglob
+    for name in glob_in_dir(dirname, basename, dironly):
+  File "/usr/lib/python3.8/glob.py", line 82, in _glob1
+    names = list(_iterdir(dirname, dironly))
+  File "/usr/lib/python3.8/glob.py", line 123, in _iterdir
+    with os.scandir(dirname) as it:
+KeyboardInterrupt
