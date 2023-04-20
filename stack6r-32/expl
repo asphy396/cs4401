@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/mnt/d/hackerman/cs4401/stack6r-32/exploit.py", line 28, in <module>
+    s = ssh(host='cs4401shell.walls.ninja')
+  File "/home/asphy/.local/lib/python3.10/site-packages/pwnlib/tubes/ssh.py", line 666, in __init__
+    self.client.connect(host, port, user, password, key, keyfiles, self.timeout, allow_agent=ssh_agent, compress=True, sock=proxy_sock, look_for_keys=not ignore_config)
+  File "/home/asphy/.local/lib/python3.10/site-packages/paramiko/client.py", line 459, in connect
+    self._auth(
+  File "/home/asphy/.local/lib/python3.10/site-packages/paramiko/client.py", line 790, in _auth
+    raise saved_exception
+  File "/home/asphy/.local/lib/python3.10/site-packages/paramiko/client.py", line 766, in _auth
+    self._transport.auth_publickey(username, key)
+  File "/home/asphy/.local/lib/python3.10/site-packages/paramiko/transport.py", line 1640, in auth_publickey
+    return self.auth_handler.wait_for_response(my_event)
+  File "/home/asphy/.local/lib/python3.10/site-packages/paramiko/auth_handler.py", line 259, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
